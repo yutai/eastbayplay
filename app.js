@@ -300,6 +300,9 @@ function renderPoolCard(pool, sched, badge, laTime) {
 
   const indoorBadge = pool.indoor
     ? '<span class="indoor-tag">Indoor</span>'
+    : '<span class="outdoor-tag">Outdoor</span>';
+  const heatedBadge = pool.heated
+    ? '<span class="heated-tag">Heated</span>'
     : '';
 
   return `<details class="pool-card" id="pool-${escHtml(pool.id)}">
@@ -311,6 +314,7 @@ function renderPoolCard(pool, sched, badge, laTime) {
     <div class="summary-sub">
       <span class="pool-city">${escHtml(pool.city)}</span>
       ${indoorBadge}
+      ${heatedBadge}
       ${staleNote}
     </div>
     ${todayHtml}

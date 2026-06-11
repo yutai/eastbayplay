@@ -6,6 +6,7 @@
       "city": "San Leandro",
       "address": "864 Dutton Ave, San Leandro, CA 94577",
       "indoor": false,
+      "heated": true,
       "operator": "City of San Leandro Recreation & Human Services",
       "info_url": "https://www.sanleandro.org/411/Aquatics",
       "schedule_sources": [
@@ -19,6 +20,7 @@
       "city": "San Leandro",
       "address": "14900 Zelma St, San Leandro, CA 94578",
       "indoor": false,
+      "heated": false,
       "operator": "City of San Leandro Recreation & Human Services",
       "info_url": "https://www.sanleandro.org/facilities/facility/details/San-Leandro-Family-Aquatic-Center-43",
       "schedule_sources": [
@@ -32,6 +34,7 @@
       "city": "Alameda",
       "address": "2256 Alameda Ave, Alameda, CA 94501",
       "indoor": false,
+      "heated": true,
       "operator": "City of Alameda Recreation & Parks",
       "info_url": "https://www.alamedaca.gov/Departments/Recreation-Parks/Emma-Hood-Swim-Center",
       "schedule_sources": [
@@ -45,6 +48,7 @@
       "city": "Alameda",
       "address": "230 Central Ave, Alameda, CA 94501",
       "indoor": false,
+      "heated": false,
       "operator": "City of Alameda Recreation & Parks",
       "info_url": "https://www.alamedaca.gov/Departments/Recreation-Parks/Encinal-Swim-Center",
       "schedule_sources": [
@@ -58,6 +62,7 @@
       "city": "Oakland",
       "address": "1269 18th St, Oakland, CA 94607",
       "indoor": false,
+      "heated": false,
       "operator": "Oakland Parks, Recreation & Youth Development",
       "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/deFremery-Pool",
       "schedule_sources": [
@@ -71,6 +76,7 @@
       "city": "Oakland",
       "address": "4550 Foothill Blvd, Oakland, CA 94601",
       "indoor": false,
+      "heated": false,
       "operator": "Oakland Parks, Recreation & Youth Development",
       "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Fremont-Pool",
       "schedule_sources": [
@@ -84,6 +90,7 @@
       "city": "Oakland",
       "address": "3860 Hanly Rd, Oakland, CA 94602",
       "indoor": false,
+      "heated": false,
       "operator": "Oakland Parks, Recreation & Youth Development",
       "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Lions-Pool",
       "schedule_sources": [
@@ -97,6 +104,7 @@
       "city": "Oakland",
       "address": "371 45th St, Oakland, CA 94609",
       "indoor": false,
+      "heated": false,
       "operator": "Oakland Parks, Recreation & Youth Development",
       "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Temescal-Pool",
       "schedule_sources": [
@@ -110,6 +118,7 @@
       "city": "Oakland",
       "address": "9161 Edes Ave, Oakland, CA 94603",
       "indoor": true,
+      "heated": true,
       "operator": "Oakland Parks, Recreation & Youth Development",
       "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Larry-E.-Reid-Sports-Center-Pool",
       "schedule_sources": [
@@ -123,6 +132,7 @@
       "city": "Piedmont",
       "address": "777 Magnolia Ave, Piedmont, CA 94611",
       "indoor": false,
+      "heated": false,
       "operator": "City of Piedmont Recreation Department",
       "info_url": "https://piedmont.ca.gov/services___departments/recreation/piedmont_community_pool",
       "schedule_sources": [
@@ -136,6 +146,7 @@
       "city": "Emeryville",
       "address": "1170 47th St, Emeryville, CA 94608",
       "indoor": false,
+      "heated": false,
       "operator": "City of Emeryville",
       "info_url": "https://www.emeryville.org/Recreation/Fitness/Aquatics",
       "schedule_sources": [
@@ -149,6 +160,7 @@
       "city": "Berkeley",
       "address": "1700 Hopkins St, Berkeley, CA 94707",
       "indoor": false,
+      "heated": true,
       "operator": "City of Berkeley Parks, Recreation & Waterfront",
       "info_url": "https://berkeleyca.gov/community-recreation/parks-recreation/facilities/pools-and-aquatic-programs/king-pool",
       "schedule_sources": [
@@ -163,6 +175,7 @@
       "city": "Berkeley",
       "address": "2100 Browning St, Berkeley, CA 94702",
       "indoor": false,
+      "heated": true,
       "operator": "City of Berkeley Parks, Recreation & Waterfront",
       "info_url": "https://berkeleyca.gov/community-recreation/parks-recreation/facilities/pools-and-aquatic-programs/west-campus-pool",
       "schedule_sources": [
@@ -177,6 +190,7 @@
       "city": "Albany",
       "address": "1311 Portland Ave, Albany, CA 94706",
       "indoor": true,
+      "heated": true,
       "operator": "Albany Unified School District / City of Albany",
       "info_url": "https://www.albanyaquaticcenter.com/",
       "schedule_sources": [

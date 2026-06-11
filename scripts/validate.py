@@ -27,7 +27,7 @@ ALLOWED_DAYS = {
 }
 ALLOWED_CATEGORIES = {"rec", "lap", "other"}
 ALLOWED_STATUSES = {"ok", "stale", "closed", "unknown"}
-POOL_REQUIRED_FIELDS = {"id", "name", "city", "address", "indoor", "operator", "info_url", "schedule_sources"}
+POOL_REQUIRED_FIELDS = {"id", "name", "city", "address", "indoor", "heated", "operator", "info_url", "schedule_sources"}
 SCHEDULE_SOURCE_REQUIRED = {"url", "type"}
 ALLOWED_SOURCE_TYPES = {"html", "pdf"}
 SCHEDULE_SOURCE_OPTIONAL = {"render"}  # optional boolean fields
@@ -80,6 +80,8 @@ for i, pool in enumerate(pools_data["pools"]):
         pool_ids.add(pid)
     if "indoor" in pool and not isinstance(pool["indoor"], bool):
         err(f"{prefix} ({pid}): 'indoor' must be a boolean")
+    if "heated" in pool and not isinstance(pool["heated"], bool):
+        err(f"{prefix} ({pid}): 'heated' must be a boolean")
     for j, src in enumerate(pool.get("schedule_sources", [])):
         for sf in SCHEDULE_SOURCE_REQUIRED:
             if sf not in src:
