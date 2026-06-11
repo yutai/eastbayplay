@@ -1,0 +1,189 @@
+{
+  "pools": [
+    {
+      "id": "sanleandro-farrelly",
+      "name": "Farrelly Pool",
+      "city": "San Leandro",
+      "address": "864 Dutton Ave, San Leandro, CA 94577",
+      "indoor": false,
+      "operator": "City of San Leandro Recreation & Human Services",
+      "info_url": "https://www.sanleandro.org/411/Aquatics",
+      "schedule_sources": [
+        {"url": "https://www.sanleandro.org/411/Aquatics", "type": "html"}
+      ],
+      "notes": "Heated outdoor pool. Seasonal (typically late May–early September). 7 lap lanes. Offers recreational swim and lap swim."
+    },
+    {
+      "id": "sanleandro-family-aquatic-center",
+      "name": "San Leandro Family Aquatic Center",
+      "city": "San Leandro",
+      "address": "14900 Zelma St, San Leandro, CA 94578",
+      "indoor": false,
+      "operator": "City of San Leandro Recreation & Human Services",
+      "info_url": "https://www.sanleandro.org/facilities/facility/details/San-Leandro-Family-Aquatic-Center-43",
+      "schedule_sources": [
+        {"url": "https://www.sanleandro.org/411/Aquatics", "type": "html"}
+      ],
+      "notes": "Seasonal outdoor water park (opens mid-June, closes late September). Zero-depth entry activity pool with water play structure. 3 lap lanes. Family-focused."
+    },
+    {
+      "id": "alameda-emma-hood",
+      "name": "Emma Hood Swim Center",
+      "city": "Alameda",
+      "address": "2256 Alameda Ave, Alameda, CA 94501",
+      "indoor": false,
+      "operator": "City of Alameda Recreation & Parks",
+      "info_url": "https://www.alamedaca.gov/Departments/Recreation-Parks/Emma-Hood-Swim-Center",
+      "schedule_sources": [
+        {"url": "https://www.alamedaca.gov/Departments/Recreation-Parks/Aquatics/Public-Swim", "type": "html"}
+      ],
+      "notes": "Outdoor heated pool at Oak Street and Alameda Avenue. Summer 2026 public swim schedule listed as 'Coming Soon' as of June 2026."
+    },
+    {
+      "id": "alameda-encinal",
+      "name": "Encinal Swim Center",
+      "city": "Alameda",
+      "address": "230 Central Ave, Alameda, CA 94501",
+      "indoor": false,
+      "operator": "City of Alameda Recreation & Parks",
+      "info_url": "https://www.alamedaca.gov/Departments/Recreation-Parks/Encinal-Swim-Center",
+      "schedule_sources": [
+        {"url": "https://www.alamedaca.gov/Departments/Recreation-Parks/Aquatics/Summer-Aquatics", "type": "html"}
+      ],
+      "notes": "Outdoor pool. Summer 2026 public swim schedule listed as 'Coming Soon' as of June 2026."
+    },
+    {
+      "id": "oakland-defremery",
+      "name": "deFremery Pool",
+      "city": "Oakland",
+      "address": "1269 18th St, Oakland, CA 94607",
+      "indoor": false,
+      "operator": "Oakland Parks, Recreation & Youth Development",
+      "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/deFremery-Pool",
+      "schedule_sources": [
+        {"url": "https://www.oaklandca.gov/topics/pool-hours", "type": "html"}
+      ],
+      "notes": "Seasonal outdoor pool. Opens around mid-June. Summer 2026 rec swim hours: Sat–Sun 12:00–4:00 pm (confirmed for summer season)."
+    },
+    {
+      "id": "oakland-fremont",
+      "name": "Fremont Pool",
+      "city": "Oakland",
+      "address": "4550 Foothill Blvd, Oakland, CA 94601",
+      "indoor": false,
+      "operator": "Oakland Parks, Recreation & Youth Development",
+      "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Fremont-Pool",
+      "schedule_sources": [
+        {"url": "https://www.oaklandca.gov/topics/pool-hours", "type": "html"}
+      ],
+      "notes": "Outdoor pool near Fremont High School. Opened April 11 2026. Contact: FremontPool@oaklandca.gov, (510) 535-5614."
+    },
+    {
+      "id": "oakland-lions",
+      "name": "Lions Pool at Dimond Park",
+      "city": "Oakland",
+      "address": "3860 Hanly Rd, Oakland, CA 94602",
+      "indoor": false,
+      "operator": "Oakland Parks, Recreation & Youth Development",
+      "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Lions-Pool",
+      "schedule_sources": [
+        {"url": "https://www.oaklandca.gov/topics/pool-hours", "type": "html"}
+      ],
+      "notes": "Outdoor pool at Dimond Park."
+    },
+    {
+      "id": "oakland-temescal",
+      "name": "Temescal Pool",
+      "city": "Oakland",
+      "address": "371 45th St, Oakland, CA 94609",
+      "indoor": false,
+      "operator": "Oakland Parks, Recreation & Youth Development",
+      "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Temescal-Pool",
+      "schedule_sources": [
+        {"url": "https://www.oaklandca.gov/topics/pool-hours", "type": "html"}
+      ],
+      "notes": "Outdoor pool at Oakland Technical High School. Contact: TemescalPool@oaklandca.gov."
+    },
+    {
+      "id": "oakland-larry-reid",
+      "name": "Larry E. Reid Sports Center Pool",
+      "city": "Oakland",
+      "address": "9161 Edes Ave, Oakland, CA 94603",
+      "indoor": true,
+      "operator": "Oakland Parks, Recreation & Youth Development",
+      "info_url": "https://www.oaklandca.gov/Community/Parks-Facilities/Pools/Larry-E.-Reid-Sports-Center-Pool",
+      "schedule_sources": [
+        {"url": "https://www.oaklandca.gov/topics/east-oakland-sports-center", "type": "html"}
+      ],
+      "notes": "Indoor 9,000 sq ft water park with white water slide, activity pools, beach entry pool, lazy river. Also known as East Oakland Sports Center Pool. Aquatic Playtime M-F for ages 6 and under. Weekday-only rec access as of 2026. Contact: (510) 615-5838."
+    },
+    {
+      "id": "piedmont-community",
+      "name": "Piedmont Community Pool",
+      "city": "Piedmont",
+      "address": "777 Magnolia Ave, Piedmont, CA 94611",
+      "indoor": false,
+      "operator": "City of Piedmont Recreation Department",
+      "info_url": "https://piedmont.ca.gov/services___departments/recreation/piedmont_community_pool",
+      "schedule_sources": [
+        {"url": "https://piedmont.ca.gov/services___departments/recreation/piedmont_community_pool", "type": "html"}
+      ],
+      "notes": "Newly reconstructed pool opened April 11, 2026. Has both Competition Pool (50m) and Activity Pool. Drop-in $5. Summer hours start June 8. Contact: (510) 420-3090."
+    },
+    {
+      "id": "emeryville-eccl",
+      "name": "Emeryville Center of Community Life Pool",
+      "city": "Emeryville",
+      "address": "1170 47th St, Emeryville, CA 94608",
+      "indoor": false,
+      "operator": "City of Emeryville",
+      "info_url": "https://www.emeryville.org/Recreation/Fitness/Aquatics",
+      "schedule_sources": [
+        {"url": "https://www.emeryville.org/Recreation/Fitness/Aquatics/Recreation-Swim", "type": "html"}
+      ],
+      "notes": "Also known as Steve Dain Drive address. Outdoor pool. Rec swim season June 22 – Aug 14, 2026. Ages under 4 free. Drop-in: adults $6, kids 5-17 $4."
+    },
+    {
+      "id": "berkeley-king",
+      "name": "King Pool",
+      "city": "Berkeley",
+      "address": "1700 Hopkins St, Berkeley, CA 94707",
+      "indoor": false,
+      "operator": "City of Berkeley Parks, Recreation & Waterfront",
+      "info_url": "https://berkeleyca.gov/community-recreation/parks-recreation/facilities/pools-and-aquatic-programs/king-pool",
+      "schedule_sources": [
+        {"url": "https://berkeleyca.gov/community-recreation/parks-recreation/facilities/pools-and-aquatic-programs/king-pool", "type": "html"},
+        {"url": "https://berkeleyca.gov/sites/default/files/2026-02/King%20Pool%20Schedule%20Spring%202026%203.2-6.7.pdf", "type": "pdf"}
+      ],
+      "notes": "Outdoor heated pool in North Berkeley. Community Swim (all ages, entire pool) offered summer only. Family Swim (shallow pool, all ages) offered year-round. All drop-in participants must pre-pay. Summer schedule PDF not yet published as of June 11, 2026; spring schedule runs through June 7. Contact: (510) 981-5105."
+    },
+    {
+      "id": "berkeley-west-campus",
+      "name": "West Campus Pool",
+      "city": "Berkeley",
+      "address": "2100 Browning St, Berkeley, CA 94702",
+      "indoor": false,
+      "operator": "City of Berkeley Parks, Recreation & Waterfront",
+      "info_url": "https://berkeleyca.gov/community-recreation/parks-recreation/facilities/pools-and-aquatic-programs/west-campus-pool",
+      "schedule_sources": [
+        {"url": "https://berkeleyca.gov/community-recreation/parks-recreation/facilities/pools-and-aquatic-programs/west-campus-pool", "type": "html"},
+        {"url": "https://berkeleyca.gov/sites/default/files/2026-02/West%20Campus%20Pool%20Schedule%20Spring%202026%204.6%20-6.7.pdf", "type": "pdf"}
+      ],
+      "notes": "Outdoor heated pool in West Berkeley. Summer only. Community Swim and Family Swim offered daily during summer. Closed June 6-7 for staff training, reopens June 8. All drop-in must pre-pay. Summer 2026 schedule PDF not yet indexed as of June 11."
+    },
+    {
+      "id": "albany-aquatic-center",
+      "name": "Albany Aquatic Center",
+      "city": "Albany",
+      "address": "1311 Portland Ave, Albany, CA 94706",
+      "indoor": true,
+      "operator": "Albany Unified School District / City of Albany",
+      "info_url": "https://www.albanyaquaticcenter.com/",
+      "schedule_sources": [
+        {"url": "https://www.albanyaquaticcenter.com/pool-schedule", "type": "html"},
+        {"url": "https://anc.apm.activecommunities.com/ahsaquaticcenter/home", "type": "html"}
+      ],
+      "notes": "Indoor pool at Albany High School. Offers Family Play Time (rec swim). ActiveNet registration system. 2026 closure dates: 6/12, 6/19, 7/3, 7/4, 8/9. Reduced lanes 6/26. Contact: (510) 559-6640."
+    }
+  ]
+}
