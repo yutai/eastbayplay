@@ -1,0 +1,33 @@
+name: Test Anthropic API Key
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Anthropic API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            https://api.anthropic.com/v1/messages \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d '{"model":"claude-haiku-4-5-20251001","max_tokens":10,"messages":[{"role":"user","content":"hi"}]}')
+
+          echo "HTTP status: $response"
+
+          if [ "$response" = "200" ]; then
+            echo "SUCCESS: API key is valid and funded"
+          elif [ "$response" = "401" ]; then
+            echo "FAIL: API key is invalid or not recognized"
+          elif [ "$response" = "403" ]; then
+            echo "FAIL: API key is valid but lacks permission"
+          elif [ "$response" = "429" ]; then
+            echo "FAIL: Rate limited or no credits"
+          else
+            echo "FAIL: Unexpected status code $response"
+          fi
