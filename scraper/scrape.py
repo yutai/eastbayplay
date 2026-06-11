@@ -12,6 +12,7 @@ Usage:
     python scraper/scrape.py --pool oakland-fremont
     python scraper/scrape.py --dry-run           # extract + report, don't write
     python scraper/scrape.py --from-fixtures     # use scraper/fixtures/ content
+    python scraper/scrape.py --render            # use headless Chrome for render: true sources
 """
 
 import argparse
@@ -40,7 +41,8 @@ FIXTURES_DIR = Path(__file__).parent / "fixtures"
 MODEL = "claude-haiku-4-5"
 MAX_TOKENS = 4096
 MAX_CHARS = 50_000  # truncate fetched content beyond this
-MAX_SESSIONS = 40   # reject if extraction returns more (probable hallucination)
+MAX_SESSIONS = 60   # reject if extraction returns more (probable hallucination)
+RECENT_DAYS = 14    # keep status "ok" if last_verified is within this many days
 
 BROWSER_HEADERS = {
     "User-Agent": (
@@ -87,6 +89,7 @@ class PoolSchedule(BaseModel):
     season_note: Optional[str]
     pool_appears_closed: bool
     extraction_confidence: Literal["high", "medium", "low"]
+    schedule_valid_through: Optional[str] = None  # "YYYY-MM-DD" if source states an end date
 
 
 # ── Fetch helpers ─────────────────────────────────────────────────────────────
@@ -132,22 +135,70 @@ def fetch_pdf(url: str, client: httpx.Client) -> str:
     return "\n\n".join(pages)
 
 
+def fetch_render(url: str) -> str:
+    """
+    Fetch a JS-rendered URL using Playwright headless Chromium.
+    Waits for network idle, then strips HTML to text.
+    Playwright is imported lazily so the module works without it installed.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        raise RuntimeError(
+            "playwright not installed — run: pip install playwright && playwright install chromium"
+        )
+
+    log.info("  Fetching (headless Chrome): %s", url)
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        try:
+            page = browser.new_page()
+            page.goto(url, wait_until="networkidle", timeout=30_000)
+            html = page.content()
+        finally:
+            browser.close()
+
+    # Same stripping as fetch_html
+    for tag in ("script", "style", "nav", "header", "footer", "noscript"):
+        html = re.sub(
+            rf"<{tag}[^>]*>.*?</{tag}>",
+            " ",
+            html,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+    html = re.sub(r"<[^>]+>", " ", html)
+    html = re.sub(r"[ \t]+", " ", html)
+    html = re.sub(r"\n{3,}", "\n\n", html)
+    return html.strip()
+
+
 def fetch_sources(
     pool: dict,
     client: httpx.Client,
     fixtures_dir: Optional[Path] = None,
-) -> Optional[str]:
+    use_render: bool = False,
+) -> tuple[Optional[str], bool]:
     """
     Fetch all schedule_sources for a pool and concatenate them.
-    Returns None if all sources fail (caller marks pool stale).
+
+    Returns (content, all_skipped) where:
+    - content is None if all sources failed (caller marks pool stale).
+    - all_skipped is True when every source was skipped (render-only pool
+      running without --render); caller should use SKIPPED outcome and
+      leave the previous entry completely untouched.
+
     Optionally reads from fixtures_dir instead of the network.
     """
     parts = []
     any_success = False
+    skipped_count = 0
+    total_count = 0
 
     for src in pool.get("schedule_sources", []):
         url = src["url"]
         src_type = src["type"]
+        needs_render = src.get("render", False)
+        total_count += 1
 
         # --- fixture override ---
         if fixtures_dir is not None:
@@ -161,9 +212,20 @@ def fetch_sources(
                 log.warning("  No fixture found for pool=%s url=%s", pool["id"], url)
                 continue
 
+        # --- render-flagged source without --render: skip ---
+        if needs_render and not use_render:
+            log.info(
+                "  Skipping render source (pass --render to fetch): %s",
+                url,
+            )
+            skipped_count += 1
+            continue
+
         # --- live fetch ---
         try:
-            if src_type == "html":
+            if needs_render and use_render:
+                text = fetch_render(url)
+            elif src_type == "html":
                 text = fetch_html(url, client)
             elif src_type == "pdf":
                 text = fetch_pdf(url, client)
@@ -187,8 +249,10 @@ def fetch_sources(
                 e,
             )
 
+    all_skipped = (skipped_count == total_count and total_count > 0)
+
     if not any_success:
-        return None
+        return None, all_skipped
 
     combined = "\n\n---\n\n".join(parts)
     if len(combined) > MAX_CHARS:
@@ -199,7 +263,7 @@ def fetch_sources(
             MAX_CHARS,
         )
         combined = combined[:MAX_CHARS]
-    return combined
+    return combined, False
 
 
 def _find_fixture(pool_id: str, url: str, fixtures_dir: Path) -> Optional[Path]:
@@ -237,6 +301,14 @@ SEASON / SCHEDULE SELECTION:
   based on today's date (given in the user message).
 - If no current schedule is available, return empty sessions and set
   extraction_confidence to "low". Never guess or invent sessions.
+- If the only schedule on the page has already ended (its end date is before
+  today), return empty sessions with confidence "low" — do not extract an
+  expired schedule.
+
+SCHEDULE END DATE:
+- If the source explicitly states a schedule end date (e.g. "through June 7",
+  "valid until September 1"), set schedule_valid_through to that date in
+  YYYY-MM-DD format. If no end date is stated, leave it null.
 
 CONFIDENCE:
 - "high"   = schedule clearly present, dates current, unambiguous.
@@ -309,6 +381,19 @@ def _time_minutes(t: tuple[int, int]) -> int:
     return t[0] * 60 + t[1]
 
 
+def _is_recently_verified(previous: Optional[dict], today: str) -> bool:
+    """Return True if last_verified is within RECENT_DAYS of today."""
+    if not previous:
+        return False
+    lv = previous.get("last_verified", "")
+    try:
+        lv_date = date.fromisoformat(lv)
+        today_date = date.fromisoformat(today)
+        return (today_date - lv_date).days <= RECENT_DAYS
+    except ValueError:
+        return False
+
+
 def validate_sessions(sessions: list[Session]) -> list[str]:
     """Return a list of validation error strings (empty = ok)."""
     errors = []
@@ -346,15 +431,35 @@ def decide_merge(
 
     Rules (in priority order):
     1. pool_appears_closed → status "closed", empty sessions, update last_verified.
-    2. extraction_confidence "low" → reject, keep previous (mark stale if ok).
-    3. Session count > MAX_SESSIONS → reject (probable hallucination).
-    4. Zero sessions extracted AND previous had >0 sessions → reject.
-    5. Validation errors in extracted sessions → reject.
-    6. Otherwise accept: status "ok", last_verified = today.
+    2. extraction_confidence "low" → reject, keep previous (mark stale only if
+       last_verified > RECENT_DAYS old; otherwise keep status unchanged).
+    3. schedule_valid_through < today → reject as expired (same keep logic).
+    4. Session count > MAX_SESSIONS → reject (probable hallucination).
+    5. Zero sessions extracted AND previous had >0 sessions → reject.
+    6. Validation errors in extracted sessions → reject.
+    7. Otherwise accept: status "ok", last_verified = today.
     """
     prev_sessions = (previous or {}).get("sessions", [])
     prev_had_sessions = len(prev_sessions) > 0
-    prev_status = (previous or {}).get("status", "unknown")
+    recently_verified = _is_recently_verified(previous, today)
+
+    def _keep_previous(reason: str) -> dict:
+        """Keep previous entry; mark stale only if not recently verified."""
+        if previous:
+            entry = dict(previous)
+            if not recently_verified and entry.get("status") == "ok":
+                entry["status"] = "stale"
+                log.warning(
+                    "  %s: %s → marking stale (last_verified > %d days ago)",
+                    pool_id, reason, RECENT_DAYS,
+                )
+            else:
+                log.warning(
+                    "  %s: %s → keeping previous (recently verified, status unchanged)",
+                    pool_id, reason,
+                )
+            return entry
+        return _unknown_entry(today)
 
     # Rule 1: closed
     if extracted.pool_appears_closed:
@@ -368,18 +473,31 @@ def decide_merge(
 
     # Rule 2: low confidence
     if extracted.extraction_confidence == "low":
-        log.warning(
-            "  %s: low confidence → keeping previous data (marking stale)",
-            pool_id,
-        )
-        if previous:
-            entry = dict(previous)
-            if entry.get("status") == "ok":
-                entry["status"] = "stale"
-            return entry
-        return _unknown_entry(today)
+        return _keep_previous("low confidence")
 
-    # Rule 3: too many sessions
+    # Rule 3: expired schedule
+    if extracted.schedule_valid_through:
+        try:
+            through_date = date.fromisoformat(extracted.schedule_valid_through)
+            today_date = date.fromisoformat(today)
+            if through_date < today_date:
+                log.warning(
+                    "  %s: schedule expired (valid_through=%s, today=%s)",
+                    pool_id,
+                    extracted.schedule_valid_through,
+                    today,
+                )
+                return _keep_previous(
+                    f"expired schedule (valid_through={extracted.schedule_valid_through})"
+                )
+        except ValueError:
+            log.warning(
+                "  %s: invalid schedule_valid_through '%s', ignoring",
+                pool_id,
+                extracted.schedule_valid_through,
+            )
+
+    # Rule 4: too many sessions
     if len(extracted.sessions) > MAX_SESSIONS:
         log.warning(
             "  %s: %d sessions > %d max → rejecting (possible hallucination)",
@@ -387,28 +505,18 @@ def decide_merge(
             len(extracted.sessions),
             MAX_SESSIONS,
         )
-        if previous:
-            entry = dict(previous)
-            if entry.get("status") == "ok":
-                entry["status"] = "stale"
-            return entry
-        return _unknown_entry(today)
+        return _keep_previous(f"{len(extracted.sessions)} sessions > {MAX_SESSIONS} max")
 
-    # Rule 4: zero sessions when previous had sessions
+    # Rule 5: zero sessions when previous had sessions
     if len(extracted.sessions) == 0 and prev_had_sessions:
         log.warning(
             "  %s: extracted 0 sessions but previous had %d → keeping previous",
             pool_id,
             len(prev_sessions),
         )
-        if previous:
-            entry = dict(previous)
-            if entry.get("status") == "ok":
-                entry["status"] = "stale"
-            return entry
-        return _unknown_entry(today)
+        return _keep_previous("0 sessions extracted but previous had sessions")
 
-    # Rule 5: session validation
+    # Rule 6: session validation
     errors = validate_sessions(extracted.sessions)
     if errors:
         log.warning(
@@ -418,12 +526,7 @@ def decide_merge(
         )
         for e in errors:
             log.warning("    %s", e)
-        if previous:
-            entry = dict(previous)
-            if entry.get("status") == "ok":
-                entry["status"] = "stale"
-            return entry
-        return _unknown_entry(today)
+        return _keep_previous(f"session validation failed ({len(errors)} errors)")
 
     # Accepted
     log.info(
@@ -465,7 +568,7 @@ def build_diff_report(
 
     for r in results:
         pid = r["pool_id"]
-        outcome = r["outcome"]  # fetch_fail | extracted | stale | closed | dry_run
+        outcome = r["outcome"]  # fetch_fail | extracted | stale | closed | dry_run | skipped | kept
         detail = r.get("detail", "")
 
         old = old_schedules.get(pid, {})
@@ -477,6 +580,18 @@ def build_diff_report(
         if outcome == "fetch_fail":
             symbol = "FAIL"
             summary = f"fetch failed — keeping previous ({old_count} sessions, status={old.get('status','?')})"
+        elif outcome == "skipped":
+            symbol = "SKIPPED"
+            summary = (
+                f"all sources need --render (skipped in CI) — "
+                f"previous entry untouched ({old_count} sessions, status={old.get('status','?')})"
+            )
+        elif outcome == "kept":
+            symbol = "KEPT"
+            summary = (
+                f"fetch failed but recently verified — "
+                f"keeping as-is ({old_count} sessions, status={old.get('status','?')})"
+            )
         elif outcome == "extracted":
             if new_status == "closed":
                 symbol = "CLOSED"
@@ -517,7 +632,7 @@ def build_diff_report(
             summary = detail
 
         lines.append(f"  [{symbol:12s}] {pid}  —  {summary}")
-        if detail and outcome not in ("extracted", "dry_run"):
+        if detail and outcome not in ("extracted", "dry_run", "skipped", "kept"):
             lines.append(f"               {detail}")
 
     lines.append("=" * 60)
@@ -565,6 +680,7 @@ def run(
     pool_filter: Optional[str] = None,
     dry_run: bool = False,
     from_fixtures: bool = False,
+    use_render: bool = False,
 ) -> int:
     """Main entry point. Returns exit code."""
     today = date.today().isoformat()
@@ -615,24 +731,54 @@ def run(
 
         # Step 1: Fetch
         fixtures = FIXTURES_DIR if from_fixtures else None
-        content = fetch_sources(pool, http_client, fixtures_dir=fixtures)
+        content, all_skipped = fetch_sources(
+            pool, http_client, fixtures_dir=fixtures, use_render=use_render
+        )
+
+        # All sources were render-only and --render not passed: leave untouched
+        if all_skipped:
+            log.info(
+                "  %s: all sources skipped (render-only, no --render) — entry untouched",
+                pid,
+            )
+            # Do not modify new_schedules — keep whatever was in old_schedules
+            results.append({
+                "pool_id": pid,
+                "outcome": "skipped",
+            })
+            continue
 
         if content is None:
             log.warning("  All sources failed for %s — keeping previous data", pid)
-            # Keep previous entry, mark stale if it was ok
             prev = old_schedules.get(pid)
-            if prev:
-                entry = dict(prev)
-                if entry.get("status") == "ok":
-                    entry["status"] = "stale"
-                new_schedules[pid] = entry
+            recently_verified = _is_recently_verified(prev, today)
+
+            if recently_verified:
+                # Keep completely unchanged — don't even touch status
+                log.info(
+                    "  %s: recently verified (within %d days) — keeping as-is",
+                    pid,
+                    RECENT_DAYS,
+                )
+                results.append({
+                    "pool_id": pid,
+                    "outcome": "kept",
+                    "detail": "fetch failed but recently verified",
+                })
             else:
-                new_schedules[pid] = _unknown_entry(today)
-            results.append({
-                "pool_id": pid,
-                "outcome": "fetch_fail",
-                "detail": "all sources HTTP error",
-            })
+                # Mark stale if it was ok
+                if prev:
+                    entry = dict(prev)
+                    if entry.get("status") == "ok":
+                        entry["status"] = "stale"
+                    new_schedules[pid] = entry
+                else:
+                    new_schedules[pid] = _unknown_entry(today)
+                results.append({
+                    "pool_id": pid,
+                    "outcome": "fetch_fail",
+                    "detail": "all sources HTTP error",
+                })
             continue
 
         # Step 2: Extract
@@ -643,28 +789,37 @@ def run(
             usage_list.append(usage)
             log.info(
                 "  Extracted: %d sessions, confidence=%s, closed=%s, "
-                "tokens=%d+%d",
+                "valid_through=%s, tokens=%d+%d",
                 len(extracted.sessions),
                 extracted.extraction_confidence,
                 extracted.pool_appears_closed,
+                extracted.schedule_valid_through,
                 usage["input_tokens"],
                 usage["output_tokens"],
             )
         except Exception as e:
             log.error("  API error for %s: %s", pid, e)
             prev = old_schedules.get(pid)
-            if prev:
-                entry = dict(prev)
-                if entry.get("status") == "ok":
-                    entry["status"] = "stale"
-                new_schedules[pid] = entry
+            recently_verified = _is_recently_verified(prev, today)
+            if recently_verified:
+                results.append({
+                    "pool_id": pid,
+                    "outcome": "kept",
+                    "detail": f"API error but recently verified: {e}",
+                })
             else:
-                new_schedules[pid] = _unknown_entry(today)
-            results.append({
-                "pool_id": pid,
-                "outcome": "fetch_fail",
-                "detail": f"API error: {e}",
-            })
+                if prev:
+                    entry = dict(prev)
+                    if entry.get("status") == "ok":
+                        entry["status"] = "stale"
+                    new_schedules[pid] = entry
+                else:
+                    new_schedules[pid] = _unknown_entry(today)
+                results.append({
+                    "pool_id": pid,
+                    "outcome": "fetch_fail",
+                    "detail": f"API error: {e}",
+                })
             continue
 
         # Step 3: Validate & merge
@@ -730,12 +885,22 @@ def main() -> None:
         action="store_true",
         help="Use scraper/fixtures/ content instead of live fetching",
     )
+    parser.add_argument(
+        "--render",
+        action="store_true",
+        help=(
+            "Use headless Chromium (Playwright) for sources marked render:true. "
+            "Requires: pip install playwright && playwright install chromium. "
+            "For local use only — CI runs without this flag and skips render sources."
+        ),
+    )
     args = parser.parse_args()
 
     sys.exit(run(
         pool_filter=args.pool,
         dry_run=args.dry_run,
         from_fixtures=args.from_fixtures,
+        use_render=args.render,
     ))
 
 

@@ -55,6 +55,34 @@ The scraper runs automatically via GitHub Actions once the feature branch is mer
 - If the workflow fails or is skipped repeatedly and `generated_at` falls more than 14 days behind today, the site shows a yellow banner: **"Schedules haven't been refreshed since \<date\>"** — this is the user-visible backstop.
 - GitHub automatically disables cron workflows after 60 days of repository inactivity. The stale-data banner catches this case.
 
+## Local scraping
+
+Some pools use JavaScript-rendered pages (ActiveNet calendars, Squarespace
+sites) that CI cannot reach without a real browser. Run this checklist on your
+residential machine to pick up those pools:
+
+```bash
+git clone git@github.com:yutai/eastbayplay.git && cd eastbayplay
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r scraper/requirements-local.txt
+playwright install chromium
+export ANTHROPIC_API_KEY=sk-ant-...
+git pull                       # always pull first (CI commits weekly)
+python scraper/scrape.py --render --dry-run   # review the report
+python scraper/scrape.py --render             # write for real
+git add data/schedules.json && git commit -m "Local scrape" && git push
+```
+
+Pools that require `--render` (marked `render: true` in `data/pools.json`):
+- San Leandro (Farrelly Pool, Family Aquatic Center) — city rec site is JS-rendered
+- Piedmont Community Pool — page content loads via JS
+- Albany Aquatic Center — albanyaquaticcenter.com pool-schedule page + ActiveNet calendar
+
+Pools that do **not** need `--render` (blocked by datacenter IP in CI, but fine from home):
+- Oakland (deFremery, Fremont, Lions, Temescal, Larry Reid) — plain HTML, blocked by IP in CI
+- Alameda (Emma Hood, Encinal) — plain HTML, blocked by IP in CI
+- Berkeley (King Pool, West Campus Pool) — plain HTML + PDF, blocked by IP in CI
+
 ## Running tests
 
 ```bash

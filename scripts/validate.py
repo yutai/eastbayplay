@@ -30,6 +30,7 @@ ALLOWED_STATUSES = {"ok", "stale", "closed", "unknown"}
 POOL_REQUIRED_FIELDS = {"id", "name", "city", "address", "indoor", "operator", "info_url", "schedule_sources"}
 SCHEDULE_SOURCE_REQUIRED = {"url", "type"}
 ALLOWED_SOURCE_TYPES = {"html", "pdf"}
+SCHEDULE_SOURCE_OPTIONAL = {"render"}  # optional boolean fields
 
 errors = []
 
@@ -85,6 +86,8 @@ for i, pool in enumerate(pools_data["pools"]):
                 err(f"{prefix} ({pid}) schedule_sources[{j}]: missing '{sf}'")
         if src.get("type") not in ALLOWED_SOURCE_TYPES:
             err(f"{prefix} ({pid}) schedule_sources[{j}]: invalid type '{src.get('type')}', must be one of {ALLOWED_SOURCE_TYPES}")
+        if "render" in src and not isinstance(src["render"], bool):
+            err(f"{prefix} ({pid}) schedule_sources[{j}]: 'render' must be a boolean")
 
 if not errors:
     print(f"  OK — {len(pool_ids)} pools, all fields valid.")

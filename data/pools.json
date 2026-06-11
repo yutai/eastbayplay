@@ -9,7 +9,7 @@
       "operator": "City of San Leandro Recreation & Human Services",
       "info_url": "https://www.sanleandro.org/411/Aquatics",
       "schedule_sources": [
-        {"url": "https://www.sanleandro.org/411/Aquatics", "type": "html"}
+        {"url": "https://www.sanleandro.org/411/Aquatics", "type": "html", "render": true}
       ],
       "notes": "Heated outdoor pool. Seasonal (typically late May–early September). 7 lap lanes. Offers recreational swim and lap swim."
     },
@@ -22,7 +22,7 @@
       "operator": "City of San Leandro Recreation & Human Services",
       "info_url": "https://www.sanleandro.org/facilities/facility/details/San-Leandro-Family-Aquatic-Center-43",
       "schedule_sources": [
-        {"url": "https://www.sanleandro.org/411/Aquatics", "type": "html"}
+        {"url": "https://www.sanleandro.org/411/Aquatics", "type": "html", "render": true}
       ],
       "notes": "Seasonal outdoor water park (opens mid-June, closes late September). Zero-depth entry activity pool with water play structure. 3 lap lanes. Family-focused."
     },
@@ -126,7 +126,7 @@
       "operator": "City of Piedmont Recreation Department",
       "info_url": "https://piedmont.ca.gov/services___departments/recreation/piedmont_community_pool",
       "schedule_sources": [
-        {"url": "https://piedmont.ca.gov/services___departments/recreation/piedmont_community_pool", "type": "html"}
+        {"url": "https://piedmont.ca.gov/services___departments/recreation/piedmont_community_pool", "type": "html", "render": true}
       ],
       "notes": "Newly reconstructed pool opened April 11, 2026. Has both Competition Pool (50m) and Activity Pool. Drop-in $5. Summer hours start June 8. Contact: (510) 420-3090."
     },
@@ -180,8 +180,8 @@
       "operator": "Albany Unified School District / City of Albany",
       "info_url": "https://www.albanyaquaticcenter.com/",
       "schedule_sources": [
-        {"url": "https://www.albanyaquaticcenter.com/pool-schedule", "type": "html"},
-        {"url": "https://anc.apm.activecommunities.com/ahsaquaticcenter/home", "type": "html"}
+        {"url": "https://www.albanyaquaticcenter.com/pool-schedule", "type": "html", "render": true},
+        {"url": "https://anc.apm.activecommunities.com/ahsaquaticcenter/home", "type": "html", "render": true}
       ],
       "notes": "Indoor pool at Albany High School. Offers Family Play Time (rec swim). ActiveNet registration system. 2026 closure dates: 6/12, 6/19, 7/3, 7/4, 8/9. Reduced lanes 6/26. Contact: (510) 559-6640."
     }

@@ -31,6 +31,7 @@ Top-level object with a single key `"pools"`, an array of pool objects.
 |-------|------|--------|
 | `url` | string | The URL the scraper should fetch. |
 | `type` | string | `"html"` — rendered HTML page; `"pdf"` — PDF document. |
+| `render` | boolean | Optional. `true` if the page requires a real browser (JS-rendered content, ActiveNet calendars, etc.). When `true`, the scraper uses headless Chromium via Playwright (requires `--render` flag for local runs). In CI (without `--render`), these sources are skipped and the pool's previous entry is left untouched. |
 
 ### Example
 
