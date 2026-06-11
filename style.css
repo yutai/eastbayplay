@@ -1,0 +1,385 @@
+/* ─── Reset & base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --border: #dde1e7;
+  --text: #1a1f2e;
+  --text-muted: #6b7280;
+  --text-small: #8a93a2;
+  --accent: #1d6fce;
+  --open-bg: #dcfce7;
+  --open-fg: #15803d;
+  --today-bg: #dbeafe;
+  --today-fg: #1d4ed8;
+  --norec-bg: #f3f4f6;
+  --norec-fg: #374151;
+  --stale-bg: #fef3c7;
+  --stale-fg: #92400e;
+  --closed-bg: #fee2e2;
+  --closed-fg: #991b1b;
+  --unknown-bg: #f3f4f6;
+  --unknown-fg: #6b7280;
+  --radius: 12px;
+  --shadow: 0 1px 4px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
+}
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ─── Header ───────────────────────────────────────────────────────────────── */
+.site-header {
+  background: #1d2235;
+  color: #fff;
+  padding: 1.25rem 1rem 1rem;
+}
+.header-inner { max-width: 640px; margin: 0 auto; }
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.site-subtitle {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.2rem;
+}
+.header-meta {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+.meta-sep { opacity: 0.4; }
+.generated-at { }
+
+/* ─── Main wrap ────────────────────────────────────────────────────────────── */
+.main-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.pool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ─── Loading / error states ───────────────────────────────────────────────── */
+.loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.error-box {
+  background: var(--surface);
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.error-box p { margin-bottom: 1rem; color: var(--text); }
+.error-box button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 88px;
+}
+.error-box button:hover { background: #155db4; }
+
+/* ─── Pool card (<details>) ────────────────────────────────────────────────── */
+.pool-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Remove default disclosure triangle in most browsers */
+.pool-card > summary { list-style: none; }
+.pool-card > summary::-webkit-details-marker { display: none; }
+
+.pool-summary {
+  cursor: pointer;
+  padding: 0.875rem 1rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+}
+.pool-summary:hover { background: #f9fafb; }
+
+.summary-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.pool-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+
+.summary-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.pool-city {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.indoor-tag {
+  font-size: 0.75rem;
+  background: #e0e7ff;
+  color: #3730a3;
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+  font-weight: 500;
+}
+
+.stale-note {
+  font-size: 0.75rem;
+  color: var(--stale-fg);
+  background: var(--stale-bg);
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+}
+
+/* ─── Badges ───────────────────────────────────────────────────────────────── */
+.badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.25em 0.6em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.badge-open-now  { background: var(--open-bg);    color: var(--open-fg); }
+.badge-today     { background: var(--today-bg);   color: var(--today-fg); }
+.badge-no-rec    { background: var(--norec-bg);   color: var(--norec-fg); }
+.badge-stale     { background: var(--stale-bg);   color: var(--stale-fg); }
+.badge-closed    { background: var(--closed-bg);  color: var(--closed-fg); }
+.badge-unknown   { background: var(--unknown-bg); color: var(--unknown-fg); }
+
+/* ─── Today's sessions (on the card summary) ───────────────────────────────── */
+.today-sessions {
+  list-style: none;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.today-sessions li {
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.session-label-inline {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ─── Expand chevron hint ──────────────────────────────────────────────────── */
+.pool-summary::after {
+  content: '▸';
+  float: right;
+  font-size: 0.75rem;
+  color: var(--text-small);
+  margin-top: 0.2rem;
+  transition: transform 0.15s;
+}
+.pool-card[open] > .pool-summary::after {
+  transform: rotate(90deg);
+}
+
+/* ─── Pool detail (expanded) ───────────────────────────────────────────────── */
+.pool-detail {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.season-note {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: 0.6rem 0 0.4rem;
+  font-style: italic;
+}
+
+.weekly-heading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-small);
+  margin: 0.75rem 0 0.5rem;
+}
+
+/* ─── Weekly schedule grid ─────────────────────────────────────────────────── */
+.weekly-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.day-block {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.day-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 4.5rem;
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+.session-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+/* Rec sessions — prominent */
+.rec-session {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+}
+.rec-session .session-time {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.rec-session .session-label {
+  color: var(--text-muted);
+}
+
+/* Lap/other sessions — de-emphasized (grey, small) */
+.other-session {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.78rem;
+  opacity: 0.6;
+}
+.other-session .session-time {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.other-session .session-label {
+  color: var(--text-small);
+}
+
+.no-sessions {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0;
+}
+
+/* ─── Pool links / meta ────────────────────────────────────────────────────── */
+.pool-links {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+}
+.pool-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.pool-links a:hover { text-decoration: underline; }
+
+.last-verified {
+  font-size: 0.75rem;
+  color: var(--text-small);
+  margin-top: 0.4rem;
+}
+
+/* ─── No-data collapsed section ────────────────────────────────────────────── */
+.no-data-section {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.no-data-section > summary { list-style: none; }
+.no-data-section > summary::-webkit-details-marker { display: none; }
+
+.no-data-summary {
+  cursor: pointer;
+  display: block;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.no-data-summary:hover { background: #f9fafb; }
+.no-data-summary::after {
+  content: '▸';
+  float: right;
+  font-size: 0.75rem;
+  color: var(--text-small);
+  transition: transform 0.15s;
+}
+.no-data-section[open] > .no-data-summary::after {
+  transform: rotate(90deg);
+}
+
+.no-data-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-small);
+}
+.site-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.site-footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive tweaks ────────────────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .pool-name { font-size: 0.9375rem; }
+  .badge { font-size: 0.75rem; padding: 0.2em 0.5em; }
+  .summary-top { gap: 0.35rem; }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Which East Bay pools have recreational swim today, and when?">
+  <title>East Bay Play — Pool Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">East Bay Play</h1>
+      <p class="site-subtitle">Rec swim finder · San Leandro to Albany</p>
+      <p class="header-meta">
+        <span id="current-date"></span>
+        <span class="meta-sep">·</span>
+        <span id="generated-at" class="generated-at"></span>
+      </p>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <div id="main-content" class="pool-list">
+      <p class="loading">Loading pool schedules…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data sourced from official city recreation websites.
+       <a href="https://github.com/yutai/eastbayplay" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
