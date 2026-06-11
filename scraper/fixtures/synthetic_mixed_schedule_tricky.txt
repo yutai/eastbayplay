@@ -1,0 +1,34 @@
+# SYNTHETIC FIXTURE — tricky case: mixed rec/lap table with M/W/F recurrence
+# Modeled after a typical East Bay municipal pool schedule page.
+# Pool: "Oakland Community Pool" (hypothetical, for testing)
+
+Oakland Community Pool — 2026 Summer Schedule
+Hours effective June 15 – September 1, 2026
+
++---------------------+----------+------------------+
+| Activity            | Days     | Time             |
++---------------------+----------+------------------+
+| Recreational Swim   | M/W/F    | 1:00 pm–3:30 pm  |
+| Recreational Swim   | Sat–Sun  | 11:00 am–4:00 pm |
+| Lap Swim            | M–F      | 6:00 am–8:00 am  |
+| Lap Swim            | M–F      | 8:00 pm–9:30 pm  |
+| Family Swim         | Tue/Thu  | 2:00 pm–4:00 pm  |
+| Parent-Tot Swim     | Saturday | 9:30 am–11:00 am |
+| Swim Lessons        | M–F      | 9:00 am–12:00 pm |
+| Water Aerobics      | M/W/F    | 7:00 am–8:00 am  |
+| Competitive Team    | Daily    | 5:00 am–6:30 am  |
++---------------------+----------+------------------+
+
+Notes:
+- "Recreational Swim" and "Family Swim" are open to all ages including children and babies.
+- Parent-Tot Swim: children 6 months–4 years with parent/guardian in water.
+- Lap Swim: adults and competitive swimmers only, lane assignment required.
+- Swim Lessons require advance registration.
+- Water Aerobics: adults 18+ only.
+- Competitive Team: OUAC members only.
+
+Admission: Adults $6, Youth (under 18) $4, Seniors 65+ $3
+No reservations needed for Recreational, Family, or Parent-Tot Swim.
+
+2026 Closure Dates: July 4 (Independence Day), August 9 (staff training)
+Contact: (510) 555-0101 | oaklandpool@example.gov
