@@ -28,6 +28,7 @@ const {
   fmtSession,
   getBadge,
   sortPools,
+  isDataStale,
 } = require(appPath);
 
 // ─── Tiny test harness ────────────────────────────────────────────────────────
@@ -255,6 +256,59 @@ console.log('\n── sortPools ──');
   // deFremery closes later → should appear first
   assertEqual(sorted[0].pool.id, 'oakland-defremery', 'open-now sorted by latest close: deFremery first');
   assertEqual(sorted[1].pool.id, 'oakland-lions',     'open-now sorted by latest close: Lions second');
+}
+
+// ─── isDataStale ──────────────────────────────────────────────────────────────
+console.log('\n── isDataStale ──');
+{
+  // Helper: build a Date that is exactly N days before a reference point
+  function daysAgo(referenceDate, n) {
+    return new Date(referenceDate.getTime() - n * 24 * 60 * 60 * 1000);
+  }
+
+  const now = new Date('2026-06-11T12:00:00Z');
+
+  // Exactly 14 days ago — NOT stale (boundary: > 14, not >= 14)
+  const exactly14 = daysAgo(now, 14);
+  assert(
+    !isDataStale(exactly14.toISOString(), now),
+    'generated_at exactly 14 days ago is NOT stale (boundary)',
+  );
+
+  // 15 days ago — stale
+  const fifteenDaysAgo = daysAgo(now, 15);
+  assert(
+    isDataStale(fifteenDaysAgo.toISOString(), now),
+    'generated_at 15 days ago IS stale',
+  );
+
+  // 1 day ago — fresh
+  const yesterday = daysAgo(now, 1);
+  assert(
+    !isDataStale(yesterday.toISOString(), now),
+    'generated_at 1 day ago is NOT stale',
+  );
+
+  // Missing / empty string — not stale (safe default)
+  assert(
+    !isDataStale('', now),
+    'empty generated_at is NOT stale (safe default)',
+  );
+
+  // Malformed string — not stale (safe default)
+  assert(
+    !isDataStale('not-a-date', now),
+    'malformed generated_at is NOT stale (safe default)',
+  );
+
+  // Far future ?now= override: today is 2026-08-01, generated_at is 2026-06-11
+  // 2026-08-01 minus 2026-06-11 = 51 days → stale
+  const futureNow = new Date('2026-08-01T00:00:00Z');
+  const oldGenAt  = '2026-06-11T00:00:00Z';
+  assert(
+    isDataStale(oldGenAt, futureNow),
+    'isDataStale respects ?now= override: 51-day-old data is stale',
+  );
 }
 
 // ─── Summary ──────────────────────────────────────────────────────────────────

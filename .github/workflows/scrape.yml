@@ -1,0 +1,60 @@
+name: Scrape Pool Schedules
+
+on:
+  schedule:
+    # Friday 6 AM Pacific (13:00 UTC); PDT/PST drift is acceptable for this use
+    - cron: '0 13 * * 5'
+  workflow_dispatch:
+
+# Prevent a cron run and a manual run from racing each other
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: scraper/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Run scraper
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scraper/scrape.py 2>&1 | tee /tmp/scrape-report.txt
+
+      - name: Validate schedules.json
+        run: python3 scripts/validate.py
+
+      - name: Commit updated schedules (if changed)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/schedules.json
+
+          # Only commit when there is actually a diff staged
+          if git diff --cached --quiet; then
+            echo "No changes to data/schedules.json — nothing to commit."
+            exit 0
+          fi
+
+          # Use the scrape report as the commit message body
+          REPORT=$(cat /tmp/scrape-report.txt)
+          git commit -m "chore: update pool schedules (automated)" -m "${REPORT}"
+          git push origin main

@@ -102,6 +102,24 @@ function fmtSession(session) {
   return `${startStr}–${endH12}:${endM} ${endAmpm}`;
 }
 
+// ─── Staleness check ─────────────────────────────────────────────────────────
+
+/**
+ * Return true if generatedAt is more than 14 days before now.
+ *
+ * @param {string} generatedAt  - ISO-8601 string, e.g. "2026-06-11T00:00:00Z"
+ * @param {Date}   now          - current time (use parseNowOverride() ?? new Date())
+ * @returns {boolean}
+ */
+function isDataStale(generatedAt, now) {
+  if (!generatedAt) return false;
+  const generated = new Date(generatedAt);
+  if (isNaN(generated.getTime())) return false;
+  const diffMs = now.getTime() - generated.getTime();
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  return diffDays > 14;
+}
+
 // ─── Status logic ─────────────────────────────────────────────────────────────
 
 /**
@@ -345,6 +363,45 @@ function renderError(msg) {
     </div>`;
 }
 
+/**
+ * Show or hide the stale-data banner depending on whether generatedAt is
+ * older than 14 days (relative to now, including the ?now= override).
+ *
+ * The banner is inserted before #main-content if not already present,
+ * so it appears at the top of the page content.
+ *
+ * @param {string} generatedAt - ISO-8601 string from schedules.json
+ * @param {Date}   now         - effective current time
+ */
+function updateStaleBanner(generatedAt, now) {
+  const BANNER_ID = 'stale-data-banner';
+  const existing = document.getElementById(BANNER_ID);
+
+  if (!isDataStale(generatedAt, now)) {
+    if (existing) existing.remove();
+    return;
+  }
+
+  // Format the generated_at date for human display (LA time)
+  const dateLabel = formatGeneratedAt(generatedAt);
+
+  if (existing) {
+    // Already present — update the date in case of hot reload
+    existing.querySelector('.stale-banner-msg').textContent =
+      `Schedules haven't been refreshed since ${dateLabel}`;
+    return;
+  }
+
+  const banner = document.createElement('div');
+  banner.id = BANNER_ID;
+  banner.className = 'stale-banner';
+  banner.innerHTML =
+    `<span class="stale-banner-msg">Schedules haven't been refreshed since ${escHtml(dateLabel)}</span>`;
+
+  const mainContent = document.getElementById('main-content');
+  mainContent.parentNode.insertBefore(banner, mainContent);
+}
+
 function render(poolsData, schedulesData, now) {
   const laTime = getLATime(now);
   const schedMap = schedulesData.schedules || {};
@@ -368,6 +425,9 @@ function render(poolsData, schedulesData, now) {
     ? `Schedules updated ${formatGeneratedAt(schedulesData.generated_at)}`
     : '';
   document.getElementById('generated-at').textContent = genAt;
+
+  // Stale-data banner (> 14 days since last scrape)
+  updateStaleBanner(schedulesData.generated_at || '', now);
 
   // Render main cards
   let html = sorted.map(({ pool, sched, badge }) =>
@@ -426,5 +486,5 @@ if (typeof document !== 'undefined') {
 // These are no-ops in the browser; the test file imports this module via
 // a thin wrapper. We attach to globalThis so the browser ignores them.
 if (typeof module !== 'undefined') {
-  module.exports = { getLATime, toMinutes, fmtMinutes, fmtSession, getBadge, sortPools, parseNowOverride };
+  module.exports = { getLATime, toMinutes, fmtMinutes, fmtSession, getBadge, sortPools, parseNowOverride, isDataStale };
 }

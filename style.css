@@ -364,6 +364,19 @@ body {
   margin-top: 0.5rem;
 }
 
+/* ─── Stale-data banner ────────────────────────────────────────────────────── */
+.stale-banner {
+  background: var(--stale-bg);
+  color: var(--stale-fg);
+  border-bottom: 1px solid #fcd34d;
+  font-size: 0.875rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+}
+.stale-banner .stale-banner-msg {
+  display: inline;
+}
+
 /* ─── Footer ───────────────────────────────────────────────────────────────── */
 .site-footer {
   text-align: center;
