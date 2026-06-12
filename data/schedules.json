@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T17:50:32Z",
+  "generated_at": "2026-06-12T14:06:10Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -419,9 +419,9 @@
       ]
     },
     "emeryville-eccl": {
-      "last_verified": "2026-06-11",
+      "last_verified": "2026-06-12",
       "status": "ok",
-      "season_note": "2026 Summer Schedule (June 22 - August 14, 2026). Current schedule in effect. Closure dates: 7/3 & 7/4. Dates and times subject to change based on high school sports, holidays, events, programs, and rentals.",
+      "season_note": "2026 Summer Schedule: June 22 - August 14 (Mon-Thu 1-3pm, Fri-Sun 2-4pm); August 15 - September 27 (Sat-Sun 2-4pm). Closure dates: 7/3 & 7/4. Schedule subject to change.",
       "sessions": [
         {
           "day": "monday",
@@ -481,9 +481,9 @@
       "sessions": []
     },
     "berkeley-west-campus": {
-      "last_verified": "2026-06-11",
+      "last_verified": "2026-06-12",
       "status": "ok",
-      "season_note": "Current schedule: June 8 - August 9, 2026 (Summer)",
+      "season_note": "Current schedule valid June 8 - August 9. Spring schedule (April 6 - June 7) has expired.",
       "sessions": [
         {
           "day": "monday",
@@ -601,137 +601,102 @@
           "day": "monday",
           "start": "07:00",
           "end": "13:00",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "tuesday",
           "start": "07:00",
           "end": "13:00",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "wednesday",
           "start": "07:00",
           "end": "13:00",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "thursday",
           "start": "07:00",
           "end": "13:00",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "friday",
           "start": "07:00",
           "end": "10:00",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "saturday",
           "start": "16:30",
           "end": "18:30",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "sunday",
           "start": "08:00",
           "end": "10:00",
-          "label": "Independent Exercise (Dive)",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "monday",
           "start": "07:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "tuesday",
           "start": "07:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "wednesday",
           "start": "07:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "thursday",
           "start": "07:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "friday",
           "start": "07:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "saturday",
           "start": "16:30",
           "end": "18:30",
-          "label": "Family Swim (Shallow)",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "sunday",
           "start": "08:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
-          "category": "rec"
-        },
-        {
-          "day": "monday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "tuesday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "wednesday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "thursday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "friday",
-          "start": "13:00",
-          "end": "16:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "saturday",
           "start": "14:30",
           "end": "16:30",
           "label": "Community Swim",
