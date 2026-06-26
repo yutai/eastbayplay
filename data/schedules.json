@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T14:09:24Z",
+  "generated_at": "2026-06-26T13:46:38Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -419,9 +419,9 @@
       ]
     },
     "emeryville-eccl": {
-      "last_verified": "2026-06-19",
+      "last_verified": "2026-06-26",
       "status": "ok",
-      "season_note": "2026 Summer Schedule: June 22 - August 14 (M-Th 1-3pm, F-Su 2-4pm); August 15 - September 27 (Sat-Sun 2-4pm). Closure dates: 7/3 & 7/4.",
+      "season_note": "2026 Summer Schedule: June 22 - August 14 (Mon-Thu 1-3pm, Fri-Sun 2-4pm). Then August 15 - September 27 (Sat-Sun 2-4pm). Closure dates: 7/3 & 7/4. Schedule subject to change based on high school sports, holidays, events, programs, and rentals.",
       "sessions": [
         {
           "day": "monday",
@@ -475,429 +475,352 @@
       ]
     },
     "berkeley-king": {
-      "last_verified": "2026-06-19",
+      "last_verified": "2026-06-26",
       "status": "ok",
-      "season_note": "Summer schedule (June 8 - August 9, 2026)",
+      "season_note": "",
       "sessions": [
         {
           "day": "monday",
+          "start": "07:30",
+          "end": "12:30",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "monday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "monday",
           "start": "06:00",
           "end": "07:30",
-          "label": "Lap Swim",
-          "category": "lap"
+          "label": "Berkeley Aquatic Masters",
+          "category": "other"
         },
         {
           "day": "monday",
+          "start": "06:00",
+          "end": "12:30",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "monday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "monday",
+          "start": "08:00",
+          "end": "12:30",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "monday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "tuesday",
           "start": "07:30",
-          "end": "09:30",
+          "end": "12:30",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "monday",
-          "start": "10:30",
-          "end": "12:00",
+          "day": "tuesday",
+          "start": "18:30",
+          "end": "20:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "monday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "monday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "monday",
-          "start": "06:00",
-          "end": "13:00",
-          "label": "Independent Exercise",
+          "day": "tuesday",
+          "start": "18:30",
+          "end": "20:00",
+          "label": "Berkeley Aquatic Masters",
           "category": "other"
         },
         {
-          "day": "monday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Independent Exercise",
-          "category": "other"
-        },
-        {
-          "day": "monday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "monday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "monday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
           "day": "tuesday",
-          "start": "06:00",
-          "end": "09:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "tuesday",
-          "start": "10:30",
-          "end": "12:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "tuesday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "tuesday",
-          "start": "17:30",
-          "end": "19:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "tuesday",
-          "start": "19:00",
-          "end": "20:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "tuesday",
-          "start": "06:00",
-          "end": "13:00",
+          "start": "07:30",
+          "end": "12:30",
           "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "tuesday",
-          "start": "17:30",
-          "end": "20:30",
+          "start": "18:30",
+          "end": "20:00",
           "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "tuesday",
-          "start": "12:00",
-          "end": "13:00",
+          "start": "16:00",
+          "end": "18:00",
+          "label": "Berkeley Barracudas",
+          "category": "other"
+        },
+        {
+          "day": "tuesday",
+          "start": "08:00",
+          "end": "12:30",
           "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "tuesday",
-          "start": "17:30",
-          "end": "20:30",
+          "start": "18:30",
+          "end": "20:00",
           "label": "Family Swim",
           "category": "rec"
         },
         {
-          "day": "tuesday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
+          "day": "wednesday",
+          "start": "07:30",
+          "end": "12:30",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "wednesday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Lap Swim",
+          "category": "lap"
         },
         {
           "day": "wednesday",
           "start": "06:00",
           "end": "07:30",
-          "label": "Lap Swim",
-          "category": "lap"
+          "label": "Berkeley Aquatic Masters",
+          "category": "other"
         },
         {
           "day": "wednesday",
+          "start": "06:00",
+          "end": "12:30",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "wednesday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "wednesday",
+          "start": "08:00",
+          "end": "12:30",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "wednesday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "thursday",
           "start": "07:30",
-          "end": "09:30",
+          "end": "12:30",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "wednesday",
-          "start": "10:30",
+          "day": "thursday",
+          "start": "18:30",
+          "end": "20:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "thursday",
+          "start": "18:30",
+          "end": "20:00",
+          "label": "Berkeley Aquatic Masters",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "07:30",
+          "end": "12:30",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "18:30",
+          "end": "20:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "16:00",
+          "end": "18:00",
+          "label": "Berkeley Barracudas",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "10:00",
           "end": "12:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "wednesday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "wednesday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "wednesday",
-          "start": "06:00",
-          "end": "13:00",
-          "label": "Independent Exercise",
-          "category": "other"
-        },
-        {
-          "day": "wednesday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Independent Exercise",
-          "category": "other"
-        },
-        {
-          "day": "wednesday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "wednesday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "wednesday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "thursday",
-          "start": "06:00",
-          "end": "09:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "thursday",
-          "start": "10:30",
-          "end": "12:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "thursday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "thursday",
-          "start": "17:30",
-          "end": "19:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "thursday",
-          "start": "19:00",
-          "end": "20:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "thursday",
-          "start": "06:00",
-          "end": "13:00",
-          "label": "Independent Exercise",
+          "label": "Swim Lessons",
           "category": "other"
         },
         {
           "day": "thursday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Independent Exercise",
-          "category": "other"
-        },
-        {
-          "day": "thursday",
-          "start": "12:00",
-          "end": "13:00",
+          "start": "08:00",
+          "end": "12:30",
           "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "thursday",
-          "start": "17:30",
-          "end": "20:30",
+          "start": "18:30",
+          "end": "20:00",
           "label": "Family Swim",
           "category": "rec"
         },
         {
-          "day": "thursday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
+          "day": "friday",
+          "start": "07:30",
+          "end": "12:30",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "friday",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Lap Swim",
+          "category": "lap"
         },
         {
           "day": "friday",
           "start": "06:00",
           "end": "07:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "friday",
-          "start": "07:30",
-          "end": "09:30",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "friday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Lap Swim",
-          "category": "lap"
+          "label": "Berkeley Aquatic Masters",
+          "category": "other"
         },
         {
           "day": "friday",
           "start": "06:00",
-          "end": "09:30",
+          "end": "12:30",
           "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "friday",
-          "start": "17:30",
-          "end": "20:30",
+          "start": "18:00",
+          "end": "20:00",
           "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "friday",
-          "start": "17:30",
-          "end": "20:30",
+          "start": "16:00",
+          "end": "18:00",
+          "label": "Berkeley Barracudas",
+          "category": "other"
+        },
+        {
+          "day": "friday",
+          "start": "08:00",
+          "end": "12:30",
           "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "friday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
+          "start": "18:00",
+          "end": "20:00",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
           "day": "saturday",
           "start": "08:00",
-          "end": "13:30",
+          "end": "12:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "saturday",
-          "start": "15:30",
-          "end": "17:30",
+          "start": "11:00",
+          "end": "12:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "saturday",
           "start": "08:00",
-          "end": "13:30",
+          "end": "12:00",
           "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "saturday",
-          "start": "15:30",
-          "end": "17:30",
-          "label": "Independent Exercise",
-          "category": "other"
-        },
-        {
-          "day": "saturday",
-          "start": "12:00",
-          "end": "13:00",
+          "start": "08:00",
+          "end": "12:00",
           "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "saturday",
-          "start": "17:30",
-          "end": "20:30",
-          "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "saturday",
-          "start": "13:30",
-          "end": "15:30",
-          "label": "Community Swim",
           "category": "rec"
         },
         {
           "day": "sunday",
           "start": "11:00",
-          "end": "13:00",
+          "end": "12:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "sunday",
-          "start": "13:00",
-          "end": "15:30",
+          "start": "12:00",
+          "end": "13:30",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "sunday",
           "start": "09:30",
-          "end": "15:30",
+          "end": "11:00",
+          "label": "Berkeley Aquatic Masters",
+          "category": "other"
+        },
+        {
+          "day": "sunday",
+          "start": "09:30",
+          "end": "13:30",
           "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "sunday",
-          "start": "13:00",
-          "end": "15:30",
+          "start": "12:00",
+          "end": "13:30",
           "label": "Family Swim",
-          "category": "rec"
-        },
-        {
-          "day": "sunday",
-          "start": "15:30",
-          "end": "17:30",
-          "label": "Community Swim",
           "category": "rec"
         }
       ]
     },
     "berkeley-west-campus": {
-      "last_verified": "2026-06-19",
+      "last_verified": "2026-06-26",
       "status": "ok",
-      "season_note": "Schedule valid June 8 - August 9, 2026",
+      "season_note": "June 8 - August 9 summer schedule in effect",
       "sessions": [
         {
           "day": "monday",
