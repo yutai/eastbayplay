@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T14:46:52Z",
+  "generated_at": "2026-07-24T15:00:01Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -476,7 +476,7 @@
     },
     "berkeley-king": {
       "last_verified": "2026-07-03",
-      "status": "ok",
+      "status": "stale",
       "season_note": "Current schedule: June 8 - August 9",
       "sessions": [
         {
