@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T15:00:01Z",
+  "generated_at": "2026-07-31T15:23:07Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -420,7 +420,7 @@
     },
     "emeryville-eccl": {
       "last_verified": "2026-07-10",
-      "status": "ok",
+      "status": "stale",
       "season_note": "2026 Summer Schedule: June 22 - August 14, 2026. Schedule changes to Saturday & Sunday only starting August 15 - September 27, 2026. Closure dates: 7/3 & 7/4.",
       "sessions": [
         {
@@ -896,7 +896,7 @@
     },
     "berkeley-west-campus": {
       "last_verified": "2026-07-10",
-      "status": "ok",
+      "status": "stale",
       "season_note": "Schedule valid June 8 - August 9, 2026",
       "sessions": [
         {
