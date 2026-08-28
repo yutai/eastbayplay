@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T13:49:53Z",
+  "generated_at": "2026-08-28T22:57:48Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -895,240 +895,121 @@
       ]
     },
     "berkeley-west-campus": {
-      "last_verified": "2026-07-10",
-      "status": "stale",
-      "season_note": "Schedule valid June 8 - August 9, 2026",
+      "last_verified": "2026-08-28",
+      "status": "ok",
+      "season_note": "Aug 10-Oct 11 schedule",
       "sessions": [
         {
           "day": "monday",
-          "start": "07:00",
-          "end": "09:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "monday",
-          "start": "10:00",
-          "end": "12:00",
-          "label": "Lap Swim (limited lap lanes)",
-          "category": "lap"
-        },
-        {
-          "day": "monday",
-          "start": "12:00",
-          "end": "13:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "monday",
-          "start": "07:00",
-          "end": "13:00",
-          "label": "Independent Exercise (Dive)",
-          "category": "other"
-        },
-        {
-          "day": "monday",
-          "start": "07:00",
-          "end": "10:00",
-          "label": "Family Swim (Shallow)",
-          "category": "rec"
-        },
-        {
-          "day": "monday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "monday",
           "start": "09:00",
           "end": "10:00",
-          "label": "Senior Exercise",
-          "category": "other"
-        },
-        {
-          "day": "tuesday",
-          "start": "07:00",
-          "end": "09:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "tuesday",
-          "start": "10:00",
-          "end": "12:00",
-          "label": "Lap Swim (limited lap lanes)",
-          "category": "lap"
-        },
-        {
-          "day": "tuesday",
-          "start": "12:00",
+          "day": "monday",
+          "start": "11:00",
           "end": "13:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "tuesday",
-          "start": "07:00",
-          "end": "13:00",
-          "label": "Independent Exercise (Dive)",
-          "category": "other"
+          "day": "monday",
+          "start": "17:00",
+          "end": "19:00",
+          "label": "Lap Swim",
+          "category": "lap"
         },
         {
           "day": "tuesday",
-          "start": "07:00",
+          "start": "08:00",
           "end": "10:00",
-          "label": "Family Swim (Shallow)",
-          "category": "rec"
-        },
-        {
-          "day": "tuesday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "tuesday",
-          "start": "09:00",
-          "end": "10:00",
-          "label": "Senior Exercise",
-          "category": "other"
-        },
-        {
-          "day": "wednesday",
-          "start": "07:00",
-          "end": "09:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "wednesday",
-          "start": "10:00",
-          "end": "12:00",
-          "label": "Lap Swim (limited lap lanes)",
-          "category": "lap"
-        },
-        {
-          "day": "wednesday",
-          "start": "12:00",
+          "day": "tuesday",
+          "start": "11:00",
           "end": "13:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
-          "day": "wednesday",
-          "start": "07:00",
-          "end": "13:00",
-          "label": "Independent Exercise (Dive)",
-          "category": "other"
-        },
-        {
-          "day": "wednesday",
-          "start": "07:00",
-          "end": "10:00",
-          "label": "Family Swim (Shallow)",
-          "category": "rec"
-        },
-        {
-          "day": "wednesday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
+          "day": "tuesday",
+          "start": "17:30",
+          "end": "19:00",
+          "label": "Lap Swim",
+          "category": "lap"
         },
         {
           "day": "wednesday",
           "start": "09:00",
           "end": "10:00",
-          "label": "Senior Exercise",
-          "category": "other"
+          "label": "Lap Swim",
+          "category": "lap"
         },
         {
-          "day": "thursday",
-          "start": "07:00",
-          "end": "09:00",
+          "day": "wednesday",
+          "start": "11:00",
+          "end": "13:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "wednesday",
+          "start": "17:00",
+          "end": "19:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "thursday",
-          "start": "10:00",
-          "end": "12:00",
-          "label": "Lap Swim (limited lap lanes)",
+          "start": "08:00",
+          "end": "10:00",
+          "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "thursday",
-          "start": "12:00",
+          "start": "11:00",
           "end": "13:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "thursday",
-          "start": "07:00",
-          "end": "13:00",
-          "label": "Independent Exercise (Dive)",
-          "category": "other"
-        },
-        {
-          "day": "thursday",
-          "start": "07:00",
-          "end": "10:00",
-          "label": "Family Swim (Shallow)",
-          "category": "rec"
-        },
-        {
-          "day": "thursday",
-          "start": "13:00",
-          "end": "15:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "thursday",
-          "start": "09:00",
-          "end": "10:00",
-          "label": "Senior Exercise",
-          "category": "other"
-        },
-        {
-          "day": "friday",
-          "start": "07:00",
-          "end": "09:00",
+          "start": "17:30",
+          "end": "19:00",
           "label": "Lap Swim",
           "category": "lap"
         },
         {
           "day": "friday",
-          "start": "07:00",
-          "end": "10:00",
-          "label": "Independent Exercise (Dive)",
-          "category": "other"
-        },
-        {
-          "day": "friday",
-          "start": "07:00",
-          "end": "10:00",
-          "label": "Family Swim (Shallow)",
-          "category": "rec"
-        },
-        {
-          "day": "friday",
-          "start": "13:00",
-          "end": "16:00",
-          "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "friday",
           "start": "09:00",
           "end": "10:00",
-          "label": "Senior Exercise",
-          "category": "other"
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "friday",
+          "start": "11:00",
+          "end": "13:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "friday",
+          "start": "17:00",
+          "end": "19:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "saturday",
+          "start": "14:30",
+          "end": "16:30",
+          "label": "Lap Swim",
+          "category": "lap"
         },
         {
           "day": "saturday",
@@ -1138,17 +1019,157 @@
           "category": "lap"
         },
         {
-          "day": "saturday",
-          "start": "16:30",
-          "end": "18:30",
-          "label": "Independent Exercise (Dive)",
+          "day": "sunday",
+          "start": "08:00",
+          "end": "09:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "sunday",
+          "start": "09:00",
+          "end": "12:00",
+          "label": "Lap Swim",
+          "category": "lap"
+        },
+        {
+          "day": "monday",
+          "start": "09:00",
+          "end": "13:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "monday",
+          "start": "17:00",
+          "end": "19:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "tuesday",
+          "start": "08:00",
+          "end": "13:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "tuesday",
+          "start": "17:30",
+          "end": "19:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "wednesday",
+          "start": "09:00",
+          "end": "13:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "wednesday",
+          "start": "17:00",
+          "end": "19:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "08:00",
+          "end": "13:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "17:30",
+          "end": "19:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "friday",
+          "start": "09:00",
+          "end": "13:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "friday",
+          "start": "17:00",
+          "end": "19:00",
+          "label": "Independent Exercise",
           "category": "other"
         },
         {
           "day": "saturday",
           "start": "16:30",
           "end": "18:30",
-          "label": "Family Swim (Shallow)",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "sunday",
+          "start": "08:00",
+          "end": "10:00",
+          "label": "Independent Exercise",
+          "category": "other"
+        },
+        {
+          "day": "monday",
+          "start": "09:00",
+          "end": "13:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "tuesday",
+          "start": "08:00",
+          "end": "13:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "wednesday",
+          "start": "09:00",
+          "end": "13:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "thursday",
+          "start": "08:00",
+          "end": "13:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "friday",
+          "start": "09:00",
+          "end": "13:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "friday",
+          "start": "17:00",
+          "end": "19:00",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "saturday",
+          "start": "16:30",
+          "end": "18:30",
+          "label": "Family Swim",
+          "category": "rec"
+        },
+        {
+          "day": "sunday",
+          "start": "08:00",
+          "end": "10:00",
+          "label": "Family Swim",
           "category": "rec"
         },
         {
@@ -1156,34 +1177,6 @@
           "start": "14:30",
           "end": "16:30",
           "label": "Community Swim",
-          "category": "rec"
-        },
-        {
-          "day": "sunday",
-          "start": "08:00",
-          "end": "09:00",
-          "label": "Lap Swim",
-          "category": "lap"
-        },
-        {
-          "day": "sunday",
-          "start": "09:00",
-          "end": "10:00",
-          "label": "Lap Swim (limited lap lanes)",
-          "category": "lap"
-        },
-        {
-          "day": "sunday",
-          "start": "08:00",
-          "end": "10:00",
-          "label": "Independent Exercise (Dive)",
-          "category": "other"
-        },
-        {
-          "day": "sunday",
-          "start": "08:00",
-          "end": "10:00",
-          "label": "Family Swim (Shallow)",
           "category": "rec"
         },
         {
