@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T22:57:48Z",
+  "generated_at": "2026-09-04T16:48:00Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -895,7 +895,7 @@
       ]
     },
     "berkeley-west-campus": {
-      "last_verified": "2026-08-28",
+      "last_verified": "2026-09-04",
       "status": "ok",
       "season_note": "Aug 10-Oct 11 schedule",
       "sessions": [
@@ -917,7 +917,7 @@
           "day": "monday",
           "start": "17:00",
           "end": "19:00",
-          "label": "Lap Swim",
+          "label": "Lap Swim (limited lap lanes)",
           "category": "lap"
         },
         {
@@ -938,7 +938,7 @@
           "day": "tuesday",
           "start": "17:30",
           "end": "19:00",
-          "label": "Lap Swim",
+          "label": "Lap Swim (limited lap lanes)",
           "category": "lap"
         },
         {
@@ -959,7 +959,7 @@
           "day": "wednesday",
           "start": "17:00",
           "end": "19:00",
-          "label": "Lap Swim",
+          "label": "Lap Swim (limited lap lanes)",
           "category": "lap"
         },
         {
@@ -980,7 +980,7 @@
           "day": "thursday",
           "start": "17:30",
           "end": "19:00",
-          "label": "Lap Swim",
+          "label": "Lap Swim (limited lap lanes)",
           "category": "lap"
         },
         {
@@ -1008,7 +1008,7 @@
           "day": "saturday",
           "start": "14:30",
           "end": "16:30",
-          "label": "Lap Swim",
+          "label": "Lap Swim (limited lap lanes)",
           "category": "lap"
         },
         {
@@ -1029,92 +1029,92 @@
           "day": "sunday",
           "start": "09:00",
           "end": "12:00",
-          "label": "Lap Swim",
+          "label": "Lap Swim (limited lap lanes)",
           "category": "lap"
         },
         {
           "day": "monday",
           "start": "09:00",
           "end": "13:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "monday",
           "start": "17:00",
           "end": "19:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "tuesday",
           "start": "08:00",
           "end": "13:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "tuesday",
           "start": "17:30",
           "end": "19:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "wednesday",
           "start": "09:00",
           "end": "13:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "wednesday",
           "start": "17:00",
           "end": "19:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "thursday",
           "start": "08:00",
           "end": "13:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "thursday",
           "start": "17:30",
           "end": "19:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "friday",
           "start": "09:00",
           "end": "13:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "friday",
           "start": "17:00",
           "end": "19:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "saturday",
           "start": "16:30",
           "end": "18:30",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "sunday",
           "start": "08:00",
           "end": "10:00",
-          "label": "Independent Exercise",
-          "category": "other"
+          "label": "Independent Exercise (Dive)",
+          "category": "rec"
         },
         {
           "day": "monday",
@@ -1185,6 +1185,41 @@
           "end": "12:00",
           "label": "Community Swim",
           "category": "rec"
+        },
+        {
+          "day": "monday",
+          "start": "10:00",
+          "end": "11:00",
+          "label": "Senior Exercise",
+          "category": "other"
+        },
+        {
+          "day": "tuesday",
+          "start": "10:00",
+          "end": "11:00",
+          "label": "Senior Exercise",
+          "category": "other"
+        },
+        {
+          "day": "wednesday",
+          "start": "10:00",
+          "end": "11:00",
+          "label": "Senior Exercise",
+          "category": "other"
+        },
+        {
+          "day": "thursday",
+          "start": "10:00",
+          "end": "11:00",
+          "label": "Senior Exercise",
+          "category": "other"
+        },
+        {
+          "day": "friday",
+          "start": "10:00",
+          "end": "11:00",
+          "label": "Senior Exercise",
+          "category": "other"
         }
       ]
     },
