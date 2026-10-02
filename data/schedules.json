@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T17:51:17Z",
+  "generated_at": "2026-10-02T18:17:23Z",
   "schedules": {
     "sanleandro-farrelly": {
       "last_verified": "2026-06-11",
@@ -896,7 +896,7 @@
     },
     "berkeley-west-campus": {
       "last_verified": "2026-09-11",
-      "status": "ok",
+      "status": "stale",
       "season_note": "Aug 10-Oct 11 schedule",
       "sessions": [
         {
